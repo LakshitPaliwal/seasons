@@ -16,7 +16,10 @@ constructor(props){
 //       this.setState({errMessage:err.message})
 //     }
 //   );
-  }
+//  }
+
+  // state = { lat:null , errMessage:'' };  
+    // we can use state outside the consturctor methode as like in 21th line without using constructor{} mathod
 
   componentDidMount(){
   window.navigator.geolocation.getCurrentPosition(
@@ -25,6 +28,8 @@ constructor(props){
     
   );
 }
+  
+  
   render(){
       if(this.state.lat && !this.state.errMessage){
        return <div>Latitude : {this.state.lat}</div> 
