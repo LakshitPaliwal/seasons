@@ -6,30 +6,27 @@ constructor(props){
   super(props)
 
   // this.state = { lat:'LOADING....' };
-   this.state = { lat:null , errMessage:'loading...' };
+  this.state = { lat:null , errMessage:'' };
   
-//   window.navigator.geolocation.getCurrentPosition(
-//     position =>{
-//       this.setState({lat:position.coords.latitude})
-//     },
-//     err =>{
-//       this.setState({errMessage:err.message})
-//     }
-//   );
-//  }
+  // window.navigator.geolocation.getCurrentPosition(
+  //   position =>{
+  //     this.setState({lat:position.coords.latitude})
+  //   },
+  //   err =>{
+  //     this.setState({errMessage:err.message})
+  //   }
+  // );
+  }
+    // state = { lat:null , errMessage:'' };  
+    // we can use state outside the consturctor methode as like in 20th line without using constructor{} mathod
 
-  // state = { lat:null , errMessage:'' };  
-    // we can use state outside the consturctor methode as like in 21th line without using constructor{} mathod
-
-  componentDidMount(){
+componentDidMount(){
   window.navigator.geolocation.getCurrentPosition(
     position => this.setState({lat:position.coords.latitude}),
     err => this.setState({errMessage:err.message})
     
   );
 }
-  
-  
   render(){
       if(this.state.lat && !this.state.errMessage){
        return <div>Latitude : {this.state.lat}</div> 
@@ -44,8 +41,6 @@ constructor(props){
 
   }
 }
-
-
 
 ReactDOM.render(
 <App/>,
