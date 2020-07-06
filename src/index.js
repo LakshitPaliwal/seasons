@@ -36,7 +36,7 @@ componentDidMount(){
         return <div> Error : {this.state.errMessage}</div>
       }
      return (
-        <div>Loading.....</div>
+          <Spinner message='please accept Location request'/>
      )
 
   }
