@@ -1,24 +1,10 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import Container from '@material-ui/core/Container';
 import { ThemeProvider } from '@material-ui/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
+import './Seasons.css';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'center',
-    backgroundColor:'#757575',
-    alignItems:'center',
-    height: '95vh',
-
-  },
-  root1: {
-    marginLeft:'100vh',
-    marginTop:'40vh'
-  },
-  
-}));
 
 const theme = createMuiTheme({
     palette: {
@@ -32,25 +18,35 @@ const theme = createMuiTheme({
   });
   
 
- const Spinner=(props)=>{
-  const classes = useStyles();
+class Spinner extends React.Component{
+  constructor(props) {
+    super(props);
+    this.state = {loadingText: 'LOADING.....'};
+  }
   
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({loadingText: '<== please accept Location request'})
+    }, 3000)
+  }
+
+  render(){
   return (
-    <ThemeProvider theme={theme}>
-            <Container maxWidth="xl" className={classes.root}>
-                <CircularProgress color='primary' className={classes.root1}/>
-                <h1>
-                    <div  className={classes.root1} >
-                        {props.message}
-                    </div>
-                </h1> 
-            </Container>
-      </ThemeProvider>
-
+      <div className='root'>
+             <div className='root1'>
+                <CircularProgress />
+              </div>
+          <h1 >
+            {this.state.loadingText}
+          </h1>    
+      </div> 
+ 
   );
-};
+}
+}
 
-Spinner.defaultProps={
-    message:'Loading.....'
-};
+
+// Spinner.defaultProps={
+//     message:'Loading.....'
+// };
 export default Spinner;
