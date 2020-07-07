@@ -1,0 +1,12 @@
+.root{
+    display: center;
+    background-color:#757575;
+    text-align:center;
+    height: 95vh;
+    border: 10px solid red;
+  }
+.root1 { 
+    color:red;
+    align-items: center;
+  }
+  
